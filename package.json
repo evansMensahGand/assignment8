@@ -1,0 +1,22 @@
+{
+  "name": "week7",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "server": "nodemon -r dotenv/config -r esm server.js",
+    "test": "mocha -r dotenv/config -r esm"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mocha": "^8.3.2",
+    "mongoose": "^5.12.5"
+  },
+  "devDependencies": {},
+  "description": ""
+}

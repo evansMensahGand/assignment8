@@ -1,0 +1,12 @@
+to create the folders in the directory use:
+  where mkdir = make directory
+mkdir client models controllers routers utils
+
+use touch for creating files 
+touch server.js
+
+the following applications will be necessary in creating a MERN Stack
+ but install npm init  -y first
+
+ now install all of these applications as stated below
+ npm i express mongoose bcryptjs jsonwebtoken cors esm http-error dotenv 
