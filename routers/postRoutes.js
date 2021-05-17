@@ -1,7 +1,7 @@
-import express from "express";
+const express = require("express");
 const router = express.Router();
-import * as postController from "../controllers/postController";
-import { verifyToken } from "../controllers/authController";
+const postController = require("../controllers/postController");
+const { verifyToken } = require("../controllers/authController");
 
 router
   .route("/")
@@ -14,4 +14,4 @@ router
   .patch(postController.updatePost)
   .delete(postController.deletePost);
 
-export default router;
+module.exports= router;

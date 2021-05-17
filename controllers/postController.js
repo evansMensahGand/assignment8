@@ -1,7 +1,7 @@
-import Post from "../models/Post";
-import User from "../models/User";
+const Post = require("../models/Post");
+const User = require("../models/User");
 
-export const getAllPost = async (req, res) => {
+ const getAllPost = async (req, res) => {
   try {
     const post = await Post.find();
     res.status(200).json({ post });
@@ -10,7 +10,7 @@ export const getAllPost = async (req, res) => {
   }
 };
 
-export const getPost = async (req, res) => {
+const getPost = async (req, res) => {
   try {
     const { postId } = req.params;
     const post = await Post.findById(postId);
@@ -23,12 +23,12 @@ export const getPost = async (req, res) => {
   }
 };
 
-export const createPost = async (req, res) => {
+ const createPost = async (req, res) => {
   try {
     const { title, content } = req.body;
 
     if (!title || !content) {
-      return res.status(400).send("Plese provide all field.");
+      return res.status(400).send("Please provide all field.");
     }
 
     // create post
@@ -41,7 +41,7 @@ export const createPost = async (req, res) => {
   }
 };
 
-export const updatePost = async (req, res) => {
+ const updatePost = async (req, res) => {
   try {
     const { postId } = req.params;
     const postExists = await Post.findById(postId);
@@ -55,7 +55,7 @@ export const updatePost = async (req, res) => {
   }
 };
 
-export const deletePost = async (req, res) => {
+const deletePost = async (req, res) => {
   try {
     const { postId } = req.params;
     const postExists = await Post.findById(postId);
@@ -67,4 +67,13 @@ export const deletePost = async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
+};
+
+
+module.exports ={
+  getAllPost,
+  getPost,
+  createPost,
+  updatePost,
+  deletePost
 };

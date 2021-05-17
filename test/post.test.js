@@ -3,7 +3,7 @@ const chai = require("chai");
 const chaiHttp = require("chai-http");
 
 // styling method
-chai.should();
+ch-ai.should();
 
 // middleware
 chai.use(chaiHttp);

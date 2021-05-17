@@ -1,10 +1,10 @@
-import User from "../models/User";
-import httpErrors from "http-errors";
-import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
-import { registerValidator, loginValidator } from "../utils/validation";
+const User = require("../models/User");
+const httpErrors = require("http-errors");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const { registerValidator, loginValidator } = require("../utils/validation");
 
-export const register = async (req, res) => {
+const register = async (req, res) => {
   //  check if all fields are available
   // if (!firstName||!lastName||!email||!password) {
   // res.status(httpErrors.BadRequest).json({message: "Please enter all fields"});
@@ -40,14 +40,14 @@ export const register = async (req, res) => {
   res.status(201).json({ user });
 };
 
-export const login = async (req, res) => {
+const login = async (req, res) => {
   // if (!email ||!password) {
   //   res.status(httpErrors.BadRequest)
   //   .json({message:"Please enter all fields"});
   //   return;
   // }
 
-  const result = await loginValidator.validateAsync(reg.body);
+  const result = await loginValidator.validateAsync(req.body);
   const { email, password } = result;
 
   let user = await User.findOne({ email });
@@ -67,7 +67,7 @@ export const login = async (req, res) => {
   res.status(200).json({ token });
 };
 
-export const verifyToken = (req, res, next) => {
+const verifyToken = (req, res, next) => {
   let token = req.headers["authorization"] || "";
   token = token.split(" ")[1];
 
@@ -78,4 +78,10 @@ export const verifyToken = (req, res, next) => {
   } else {
     res.status(403).json({ message: "Unauthorized" });
   }
+};
+
+module.exports = {
+  register,
+  login,
+  verifyToken,
 };

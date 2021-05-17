@@ -1,12 +1,18 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 
-mongoose.connect(process.env.MONGODB_URI, {
+const connectDB = async ()=> {
+  await mongoose.connect(process.env.MONGODB_URI, {
    useCreateIndex:true,
    useFindAndModify: false,
    useNewUrlParser:true,
    useUnifiedTopology:true,
 
- })
- .then(()=>console.log("Database is connected successfully"))
- .catch((err)=>console.log(err.message));
+ });
+ console.log("MongoDB connected successfully");
+//  .then(()=>console.log("Database is connected successfully"))
+//  .catch((err)=>console.log(err.message));
+
+};
+
+module.exports= connectDB;
